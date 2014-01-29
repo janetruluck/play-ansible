@@ -1,0 +1,8 @@
+---
+- name: download scala
+  get_url: url=http://www.scala-lang.org/files/archive/scala-2.10.3.deb dest=/tmp
+
+- name: install scala
+  command: dpkg --skip-same-version -i /tmp/{{ item }}
+  with_items: 
+    - scala-2.10.3.deb
