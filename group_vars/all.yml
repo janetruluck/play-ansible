@@ -1,0 +1,17 @@
+---
+# application name 
+application: core-api
+
+# Local setting for storing generated passwords, SSH key and project directory
+local_home: "{{ lookup('env', 'HOME') }}"
+local_ssh_key: "{{ local_home }}/.ssh/id_rsa.pub"
+
+# Paths on the remote servers
+current_path: /home/{{ user }}/apps/{{ application }}/current
+shared_path: /home/{{ user }}/apps/{{ application }}/shared
+
+# User configuration
+user: deploy
+# Uncomment the below lines to setup the user groups and password for the deploy user if needed.
+# user_group: sudo
+# user_password: password12345
