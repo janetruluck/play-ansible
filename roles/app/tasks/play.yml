@@ -1,0 +1,10 @@
+---
+- name: download the play framework
+  get_url: url=http://downloads.typesafe.com/play/2.1.1/play-2.1.1.zip dest=/opt/play-2.1.1.zip
+
+- name: extract the play framework
+  command: chdir=/opt/ unzip play-2.1.1.zip 
+           creates=/opt/play-2.1.1
+ 
+- name: symlink for convenience
+  file: src=/opt/play-2.1.1 path=/opt/play state=link
