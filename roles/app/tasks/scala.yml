@@ -1,8 +1,15 @@
 ---
+- name: install scala dependency packages
+  sudo: yes
+  apt: pkg={{item}} state=present
+  with_items:
+    - libjansi-java
+
 - name: download scala
-  get_url: url=http://www.scala-lang.org/files/archive/scala-2.10.3.deb dest=/tmp
+  get_url: url=http://www.scala-lang.org/files/archive/scala-{{ scala_version }}.deb dest=/tmp
 
 - name: install scala
+  sudo: yes
   command: dpkg --skip-same-version -i /tmp/{{ item }}
   with_items: 
-    - scala-2.10.3.deb
+    - scala-{{ scala_version }}.deb
