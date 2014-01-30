@@ -1,2 +1,5 @@
 ---
 - include: iptables.yml
+- include: jdk.yml
+- include: scala.yml
+- include: play.yml
