@@ -13,5 +13,16 @@ shared_path: /home/{{ user }}/apps/{{ application }}/shared
 # User configuration
 user: deploy
 # Uncomment the below lines to setup the user groups and password for the deploy user if needed.
-# user_group: sudo
+user_group: sudo
 # user_password: password12345
+
+# OpenJDK
+open_jdk_version: 7
+java_home: /usr/lib/jvm/java-1.{{ open_jdk_version }}.0-openjdk-amd64
+
+# Scala
+scala_version: 2.10.3
+
+# Play
+play_version: 2.2.1
+play_home: /home/{{ user }}
