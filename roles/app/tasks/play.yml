@@ -1,10 +1,15 @@
 ---
 - name: download the play framework
-  get_url: url=http://downloads.typesafe.com/play/2.1.1/play-2.1.1.zip dest=/opt/play-2.1.1.zip
+  get_url: url=http://downloads.typesafe.com/play/{{ play_version }}/play-{{ play_version }}.zip dest={{ play_home }}/play-{{ play_version }}.zip
 
 - name: extract the play framework
-  command: chdir=/opt/ unzip play-2.1.1.zip 
-           creates=/opt/play-2.1.1
+  command: chdir={{ play_home }} unzip play-{{ play_version }}.zip 
+           creates={{ play_home }}/play-{{ play_version }}
  
 - name: symlink for convenience
-  file: src=/opt/play-2.1.1 path=/opt/play state=link
+  file: src={{ play_home }}/play-{{ play_version }} path={{ play_home }}/play state=link
+
+- name: create play init script
+  sudo: yes
+  template: src=play.initscript.j2 dest=/etc/init.d/play mode=0755
+  notify: restart play
