@@ -2,4 +2,4 @@
 - name: add ssh keys to authorized keys
   sudo: yes
   template: src=authorized_keys dest=/home/{{ user }}/.ssh/authorized_keys
-  notify: ssh keys added to authorized keys
+  notify: restart ssh

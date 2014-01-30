@@ -1,5 +1,5 @@
 ---
-- name: update deploy user 
+- name: update deploy user
   sudo: yes
   user: name={{user}} state=present generate_ssh_key=yes ssh_key_bits=2048 group={{user_group}}
 
@@ -17,7 +17,7 @@
   sudo: yes
   notify: restart ssh
 
-- name: update apt-get 
+- name: update apt-get
   sudo: yes
   apt: update_cache=yes upgrade=yes
 
@@ -47,5 +47,6 @@
     - python-software-properties
     - zlib1g
     - zlib1g-dev
- 
-- include: fail2ban.yml 
+
+- include: fail2ban.yml
+- include: ssh.yml
